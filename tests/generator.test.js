@@ -70,3 +70,29 @@ test('safeUrl and escapeHtml basics', () => {
   assert.equal(safeUrl('not a url'), null);
   assert.equal(escapeHtml(`<&"'>`), '&lt;&amp;&quot;&#39;&gt;');
 });
+
+test('handler words in visible text do not fail the guardrail', () => {
+  const html = generatePage({ ...good, features: 'Call onload=desk' }, { date });
+  assert.equal(validateHtml(html).ok, true);
+});
+
+test('javascript mentioned in copy is not treated as a link', () => {
+  const html = generatePage({ ...good, headline: 'See href=javascript:alert(1)' }, { date });
+  assert.equal(validateHtml(html).ok, true);
+  assert.doesNotMatch(html, /href="javascript:/i);
+});
+
+test('the word undefined inside a sentence is allowed', () => {
+  const html = generatePage({ ...good, subheadline: 'Scope is undefined until deposit' }, { date });
+  assert.equal(validateHtml(html).ok, true);
+});
+
+test('mailto without an email is rejected', () => {
+  assert.throws(() => generatePage({ ...good, ctaUrl: 'mailto:not an email' }, { date }), /ctaUrl/);
+});
+
+test('mailto with an email and subject is kept', () => {
+  const html = generatePage({ ...good, ctaUrl: 'mailto:hi@example.com?subject=Hi' }, { date });
+  assert.match(html, /href="mailto:hi@example\.com\?subject=Hi"/);
+  assert.equal(validateHtml(html).ok, true);
+});

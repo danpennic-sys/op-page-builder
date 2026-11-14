@@ -7,6 +7,19 @@
 
 const DEFAULT_ACCENT = '#c8691e';
 
+function isEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function mailtoAddress(href) {
+  const raw = href.slice('mailto:'.length).split('?')[0];
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
+}
+
 export function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -57,9 +70,13 @@ export function generatePage(form, { date = new Date().toISOString().slice(0, 10
   if (f.ctaUrl) {
     ctaHref = safeUrl(f.ctaUrl);
     if (!ctaHref) problems.push('ctaUrl must be an http, https or mailto URL');
+    else if (ctaHref.startsWith('mailto:') && !isEmail(mailtoAddress(ctaHref))) {
+      ctaHref = null;
+      problems.push('ctaUrl must be an http, https or mailto URL');
+    }
   } else if (f.contactEmail) {
     ctaHref = safeUrl(`mailto:${f.contactEmail}`);
-    if (!ctaHref || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.contactEmail)) {
+    if (!ctaHref || !isEmail(f.contactEmail)) {
       ctaHref = null;
       problems.push('contactEmail is not a valid email address');
     }

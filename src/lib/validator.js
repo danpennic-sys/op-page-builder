@@ -26,11 +26,13 @@ export function validateHtml(html) {
 
   if (/<script[\s>]/i.test(src)) errors.push('Contains <script>; generated pages must be script-free');
   if (/<(iframe|object|embed|form)[\s>]/i.test(src)) errors.push('Contains iframe, object, embed or form');
-  if (/\son[a-z]+\s*=/i.test(src)) errors.push('Contains inline event handler attribute');
-  if (/(href|src|action)\s*=\s*["']?\s*(javascript|data|vbscript):/i.test(src)) {
+  if (/<[^>]*\son[a-z]+\s*=/i.test(src)) errors.push('Contains inline event handler attribute');
+  if (/<[^>]*\s(?:href|src|action)\s*=\s*["']?\s*(?:javascript|data|vbscript):/i.test(src)) {
     errors.push('Contains javascript:, data: or vbscript: URL');
   }
-  if (/\{\{|\}\}|undefined|\[object Object\]/.test(src)) errors.push('Contains unresolved placeholder or undefined value');
+  if (/\{\{|\}\}|>(?:\s*)(?:undefined|\[object Object\])(?:\s*)</.test(src)) {
+    errors.push('Contains unresolved placeholder or undefined value');
+  }
 
   // External resource loading (links to other sites via <a> are fine).
   if (/<(img|link|source|video|audio)[^>]+(src|href)=["']?(https?:)?\/\//i.test(src)) {
