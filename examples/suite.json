@@ -1,0 +1,87 @@
+[
+  {
+    "id": "operator-pages",
+    "name": "Operator Pages",
+    "aim": "Proof, not a promise. One standard. Every product.",
+    "now": "The standard is published. The landing repo states a $490 pay-once offer.",
+    "gap": "The offer is a line in a repo. This desk does not take payment.",
+    "form": {
+      "businessName": "Operator Pages",
+      "headline": "Proof, not a promise.",
+      "subheadline": "One standard. Every product. This desk does not publish.",
+      "features": "See the suite before you write\nSet the page from the record\nAct only when the guardrail is clear\nVerify the exact HTML before export\nThe export is a file, not a release\nRepeat on the next product",
+      "ctaText": "Request a briefing",
+      "ctaUrl": "",
+      "contactEmail": "",
+      "accentColor": "#c8691e"
+    }
+  },
+  {
+    "id": "quantumguard",
+    "name": "QuantumGuard",
+    "aim": "One verifier for every pack.",
+    "now": "v1 is frozen. Ed25519. PASS, FAIL, or INDETERMINATE. Offline.",
+    "gap": "The PQC path is a stub. FIPS work is scoping, not a certificate.",
+    "form": {
+      "businessName": "QuantumGuard",
+      "headline": "One verifier. Three answers.",
+      "subheadline": "Offline. PASS, FAIL, or INDETERMINATE.",
+      "features": "v1 is frozen on Ed25519\nThe product PQC path is a stub\nFIPS work is not a certificate\nOne verifier, not a second one\nNo network in the check\nPay once, under the Operator Pages standard",
+      "ctaText": "Request a briefing",
+      "ctaUrl": "",
+      "contactEmail": "",
+      "accentColor": "#c8691e"
+    }
+  },
+  {
+    "id": "field-seals",
+    "name": "Field seals",
+    "aim": "One sealer for every field record, under one contract.",
+    "now": "Twenty public sealers. Offline. Deterministic. Pay once. CONTRACT-v1.",
+    "gap": "Twenty repos. Not one running desk. This page does not run them.",
+    "form": {
+      "businessName": "Field seals",
+      "headline": "Twenty sealers. One contract line.",
+      "subheadline": "Offline. Deterministic. Pay once. Not a second verifier.",
+      "features": "Daily, time, and timesheet records\nInvoice, fuel, and equipment records\nPermit, weather, and delivery records\nSafety, punch list, and change orders\nMedia, binder, and close-out packs\nEach one seals. QuantumGuard verifies.",
+      "ctaText": "Request a briefing",
+      "ctaUrl": "",
+      "contactEmail": "",
+      "accentColor": "#c8691e"
+    }
+  },
+  {
+    "id": "vaultmax",
+    "name": "VaultMax",
+    "aim": "No single node holds the key.",
+    "now": "The page states five nodes, any three, air-gap, and no call home.",
+    "gap": "The public repo description still says mil-spec. This page will not.",
+    "form": {
+      "businessName": "VaultMax",
+      "headline": "No single node holds the key.",
+      "subheadline": "Five nodes. Any three reconstruct. Air-gap capable. No call home.",
+      "features": "5-node split key, any 3 reconstruct\nA dropped node recovers without an operator in the loop\nAES-256-GCM, tamper checks, stale shards rejected\nAudit memory that survives a hard reset\nFully offline. No telemetry. No cloud dependency.\nPython on your hardware, from a Pi to bare metal",
+      "ctaText": "Request a briefing",
+      "ctaUrl": "",
+      "contactEmail": "",
+      "accentColor": "#c8691e"
+    }
+  },
+  {
+    "id": "packgate",
+    "name": "PackGate",
+    "aim": "A local desk that emits an evidence pack.",
+    "now": "Emit and verify evidence-core packs. Pay once.",
+    "gap": "The repo says it is not a QuantumGuard signature. The page repeats that.",
+    "form": {
+      "businessName": "PackGate",
+      "headline": "Emit a pack. Do not sign it.",
+      "subheadline": "Local evidence-core packs. Not a QuantumGuard signature.",
+      "features": "Emit an evidence-core pack\nVerify that pack locally\nPay once\nNot a QuantumGuard signature\nOffline desk\nThe signature stays with the one verifier",
+      "ctaText": "Request a briefing",
+      "ctaUrl": "",
+      "contactEmail": "",
+      "accentColor": "#c8691e"
+    }
+  }
+]
