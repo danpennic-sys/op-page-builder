@@ -7,10 +7,25 @@
 
 const DEFAULT_ACCENT = '#c8691e';
 
+/**
+ * @typedef {{
+ *   features?: string | string[],
+ *   accentColor?: string,
+ *   businessName?: string,
+ *   headline?: string,
+ *   subheadline?: string,
+ *   ctaText?: string,
+ *   ctaUrl?: string,
+ *   contactEmail?: string,
+ * }} PageInput
+ */
+
+/** @param {string} value */
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+/** @param {string} href */
 function mailtoAddress(href) {
   const raw = href.slice('mailto:'.length).split('?')[0];
   try {
@@ -20,6 +35,7 @@ function mailtoAddress(href) {
   }
 }
 
+/** @param {unknown} value */
 export function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -29,7 +45,11 @@ export function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
-/** Returns a normalized URL string for http, https or mailto, else null. */
+/**
+ * Returns a normalized URL string for http, https or mailto, else null.
+ * @param {unknown} value
+ * @returns {string | null}
+ */
 export function safeUrl(value) {
   try {
     const url = new URL(String(value ?? '').trim());
@@ -39,9 +59,11 @@ export function safeUrl(value) {
   }
 }
 
+/** @param {PageInput} [form] */
 export function normalizeForm(form = {}) {
-  const features = (Array.isArray(form.features) ? form.features : String(form.features ?? '').split('\n'))
-    .map((f) => String(f).trim())
+  const rawFeatures = Array.isArray(form.features) ? form.features : String(form.features ?? '').split('\n');
+  const features = rawFeatures
+    .map((feature) => String(feature).trim())
     .filter(Boolean)
     .slice(0, 6);
   const accent = /^#[0-9a-fA-F]{6}$/.test(form.accentColor ?? '') ? form.accentColor : DEFAULT_ACCENT;
@@ -60,6 +82,8 @@ export function normalizeForm(form = {}) {
 /**
  * Generate a standalone HTML landing page. Pure function, no I/O, no network.
  * Throws an Error listing every problem if the form is invalid.
+ * @param {PageInput} [form]
+ * @param {{ date?: string }} [options]
  */
 export function generatePage(form, { date = new Date().toISOString().slice(0, 10) } = {}) {
   const f = normalizeForm(form);

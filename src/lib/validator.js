@@ -10,6 +10,7 @@
 
 const MAX_BYTES = 200 * 1024;
 
+/** @param {unknown} html */
 export function validateHtml(html) {
   const errors = [];
   const warnings = [];
