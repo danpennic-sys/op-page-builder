@@ -1,0 +1,10 @@
+{
+  "businessName": "VaultMax",
+  "headline": "No single node holds the key.",
+  "subheadline": "Five nodes. Any three reconstruct. Air-gap capable. No call home.",
+  "ctaText": "Request a briefing",
+  "ctaUrl": "",
+  "contactEmail": "",
+  "features": "5-node split key, any 3 reconstruct\nA dropped node recovers without an operator in the loop\nAES-256-GCM, tamper checks, stale shards rejected\nAudit memory that survives a hard reset\nFully offline. No telemetry. No cloud dependency.\nPython on your hardware, from a Pi to bare metal",
+  "accentColor": "#c8691e"
+}
