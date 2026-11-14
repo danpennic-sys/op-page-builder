@@ -1,0 +1,11 @@
+{
+  "name": "op-page-builder",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local, offline landing page generator. No API keys, no network.",
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "license": "UNLICENSED"
+}
